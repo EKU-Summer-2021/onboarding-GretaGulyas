@@ -11,6 +11,3 @@ class CSVReadDataTets(unittest.TestCase):
         ACTUAL = isinstance(read_csv_pandas(), pd.DataFrame)
         # then
         self.assertEqual(EXPECTED, ACTUAL)
-
-    # def test_fails(self):
-    #     self.assertEqual(True, False)
