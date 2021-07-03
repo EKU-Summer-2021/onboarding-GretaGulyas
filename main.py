@@ -1,9 +1,3 @@
-import numpy as np
+from src.cost_func import cost
 
-from src import Polynomial
-
-if __name__ == '__main__':
-    coeffs = np.array([1, 0, 0])
-    polynom = Polynomial(coeffs)
-    print(polynom.evaluate(3))
-    print(polynom.roots())
+print(cost(5, [1, 2, 3, 4, 5], [1, 2, 3, 4, 5]))
