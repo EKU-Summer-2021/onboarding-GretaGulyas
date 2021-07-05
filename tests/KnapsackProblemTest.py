@@ -1,6 +1,6 @@
 import unittest
 
-from src.cost_func import cost
+from src.KnapsackProblem import cost
 
 
 class CostFuncTest(unittest.TestCase):
