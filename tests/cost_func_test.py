@@ -12,3 +12,5 @@ class CostFuncTest(unittest.TestCase):
         ACTUAL = cost([1, 2, 3, 4, 5])
         # then
         self.assertEqual(EXPECTED, ACTUAL)
+
+# test
