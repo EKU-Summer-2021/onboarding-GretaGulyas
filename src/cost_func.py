@@ -18,3 +18,5 @@ def cost(values):
 
     total_cost = np.sum(values)
     return total_cost
+
+# cost
