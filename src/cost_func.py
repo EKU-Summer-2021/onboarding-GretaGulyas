@@ -5,7 +5,7 @@
 import numpy as np
 
 
-class CostOfKnapsack:
+class cost_func:
     """
         The class that contains the cost func.
     """
