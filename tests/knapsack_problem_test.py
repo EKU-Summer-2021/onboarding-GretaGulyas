@@ -10,6 +10,8 @@ from src.csv_read import read_csv_pandas
 from src.knapsack_problem import KnapsackProblem
 
 
+# test
+
 class CostFuncTest(unittest.TestCase):
     """
         The class that contains the test for the cost function.
