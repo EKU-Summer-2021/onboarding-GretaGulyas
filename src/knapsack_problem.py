@@ -22,5 +22,5 @@ class KnapsackProblem:
         knapsack_cost = 0
         for index, item in enumerate(items):
             if item == 1:
-                knapsack_cost += self.data["weight"][index]
+                knapsack_cost += self.data.weight[index]
         return knapsack_cost

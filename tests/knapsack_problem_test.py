@@ -24,6 +24,7 @@ class CostFuncTest(unittest.TestCase):
                                     "ligent%20System%20Data"
                                     "/KP/KP_10.csv ")
         knapsack = KnapsackProblem(dataframe, 15)
+        print(knapsack.data.columns)
         # given
         expected = 41
         # when
