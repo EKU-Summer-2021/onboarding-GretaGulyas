@@ -5,14 +5,14 @@
 
 # pylint: disable=too-few-public-methods
 
-
 class KnapsackProblem:
     """
         The class that contains the cost func.
     """
 
-    def __init__(self, dataframe):
+    def __init__(self, dataframe, capacity):
         self.data = dataframe
+        self.capacity = capacity
 
     def cost(self, items):
         """
