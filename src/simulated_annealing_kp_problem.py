@@ -6,6 +6,10 @@ import random
 
 
 class MySAProblem:
+    """
+        Class for the functions that solve the knapsack problem with SA.
+    """
+
     def __init__(self, ksp):
         """
             Initialize parameters.
@@ -18,21 +22,20 @@ class MySAProblem:
             Randomly generating the initial state of the elements in the knapsack.
         """
         state = []
-        for i in range(0, len(self.ksp.data)):
+        for _ in range(0, len(self.ksp.data)):
             state.append(random.randint(0, 1))
         return state
 
-    # todo snake_case
     def randomly_change_state(self):
         """
             Randomly generating the initial state of the elements in the knapsack.
         """
         changed_state = self.state
-        IndexOfChangedElement = random.randint(0, 9)
-        if (changed_state[IndexOfChangedElement]) == 0:
-            changed_state[IndexOfChangedElement] = 1
+        index_of_changed_element = random.randint(0, 9)
+        if (changed_state[index_of_changed_element]) == 0:
+            changed_state[index_of_changed_element] = 1
         else:
-            changed_state[IndexOfChangedElement] = 0
+            changed_state[index_of_changed_element] = 0
         return changed_state
 
     def solve(self):
