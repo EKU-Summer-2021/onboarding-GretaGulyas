@@ -5,6 +5,9 @@ import math
 import random
 
 
+# pylint: disable=R0913
+# pylint: disable=too-many-arguments
+
 class MySAProblem:
     """
         Class for the functions that solve the knapsack problem with SA.
@@ -42,32 +45,30 @@ class MySAProblem:
         """
             Randomly generating the initial state of the elements in the knapsack.
         """
-        initial_temp = 90
-        final_temp = .1
-        alpha = 0.01
 
-        current_temp = initial_temp
-
-        # Start by initializing the current state with the initial state
+        current_temp = 200
+        final_temp = .01
+        alpha = 0.1
+        # Start by initializing the current state
+        # with the initial state, which is smaller than capacity
+        while self.ksp.cost(self.state) > self.ksp.capacity:
+            self.state = self.generate_initial_state()
         current_state = self.state
-        print(current_state)
-        solution = current_state
 
         while current_temp > final_temp:
-            neighbor = self.randomly_change_state()
-            # Check if neighbor is best so far
-            print("Current state", current_state)
-            print("Neighbor", neighbor)
-            cost_diff = self.ksp.cost(current_state) - self.ksp.cost(neighbor)
+            neighbor = self.randomly_change_state(current_state)
+            cost_val_diff = self.ksp.calculate_value(current_state) - self.ksp.calculate_value(neighbor)
 
-            # if the new solution is better, accept it
-            if cost_diff > 0:
-                solution = neighbor
-            # if the new solution is not better, accept it with a probability of e^(-cost/temp)
-            else:
-                if random.uniform(0, 1) < math.exp(-cost_diff / current_temp):
-                    solution = neighbor
+            if self.ksp.capacity >= self.ksp.cost(neighbor):
+                if cost_val_diff < 0:
+                    current_state = neighbor
+
+                # if the new solution is not better,
+                # accept it with a probability of e^(-cost/temp)
+                else:
+                    if random.uniform(0, 1) < math.exp(-cost_val_diff / current_temp):
+                        current_state = neighbor
+
             # decrement the temperature
             current_temp -= alpha
-
-        return solution
+        return current_state, self.ksp.cost(current_state)
