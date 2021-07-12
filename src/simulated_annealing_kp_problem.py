@@ -29,11 +29,12 @@ class MySAProblem:
             state.append(random.randint(0, 1))
         return state
 
-    def randomly_change_state(self):
+    @staticmethod
+    def randomly_change_state(state):
         """
             Randomly generating the initial state of the elements in the knapsack.
         """
-        changed_state = self.state
+        changed_state = state.copy()
         index_of_changed_element = random.randint(0, 9)
         if (changed_state[index_of_changed_element]) == 0:
             changed_state[index_of_changed_element] = 1
@@ -57,7 +58,8 @@ class MySAProblem:
 
         while current_temp > final_temp:
             neighbor = self.randomly_change_state(current_state)
-            cost_val_diff = self.ksp.calculate_value(current_state) - self.ksp.calculate_value(neighbor)
+            cost_val_diff = self.ksp.calculate_value(current_state) - \
+                            self.ksp.calculate_value(neighbor)
 
             if self.ksp.capacity >= self.ksp.cost(neighbor):
                 if cost_val_diff < 0:
@@ -71,4 +73,4 @@ class MySAProblem:
 
             # decrement the temperature
             current_temp -= alpha
-        return current_state, self.ksp.cost(current_state)
+        return current_state, self.ksp.cost(current_state), self.ksp.calculate_value(current_state)

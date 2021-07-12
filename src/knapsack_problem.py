@@ -25,3 +25,14 @@ class KnapsackProblem:
             if item == 1:
                 knapsack_cost += self.data.weight[index]
         return knapsack_cost
+
+    def calculate_value(self, items):
+        """
+            Calculate the given items' values.
+        """
+
+        value = 0
+        for index, item in enumerate(items):
+            if item == 1:
+                value += self.data.value[index]
+        return value
